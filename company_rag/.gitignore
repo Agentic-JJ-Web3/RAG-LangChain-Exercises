@@ -1,5 +1,0 @@
-.env
-
-data/*.pdf
-venv/
-__pycache__/
