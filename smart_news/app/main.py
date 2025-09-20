@@ -1,39 +1,46 @@
 import json
-from config.settings import GOOGLE_API_KEY
+from config.settings import NEWS_API_KEY, GOOGLE_API_KEY
+from app.news_loader import NewsLoader
 from app.ai_enhancer import enhance_article
 
 def main():
-    """Main function to run the news enhancement pipeline with a mock article."""
+    """Main function to run the news enhancement pipeline."""
     
-    mock_article_content = (
-        "After years of development, the new Artemis rocket is set to launch next month, "
-        "marking a new era in lunar exploration. The mission's primary goal is to establish a sustainable "
-        "presence on the Moon, which will serve as a stepping stone for future missions to Mars. "
-        "Scientists are hopeful that the data collected will unlock new insights into the formation of our solar system."
-    )
-    mock_article_metadata = {
-        "title": "Artemis Rocket Set for Historic Lunar Launch",
-        "link": "https://example.com/artemis-launch",
-        "source": "space-news-inc",
-        "publish_date": "2025-09-20",
-    }
+    # 1. Load news articles
+    print("Loading news articles...")
+    loader = NewsLoader(api_key=NEWS_API_KEY, query="world news")
+    documents = loader.load()
+    print(f"Loaded {len(documents)} articles.")
 
-    print("Enhancing mock article...")
-    try:
-        enhancement = enhance_article(mock_article_content, GOOGLE_API_KEY)
+    enhanced_articles = []
+    for doc in documents:
+        print(f"Enhancing article: {doc.metadata['title']}")
+        article_content = doc.page_content
         
-        enhanced_article = {
-            "original_article": mock_article_metadata,
-            "ai_enhancement": enhancement
-        }
-        
+        if article_content and article_content != 'ONLY AVAILABLE IN PAID PLANS':
+            # 2. Enhance the article
+            try:
+                enhancement = enhance_article(article_content, GOOGLE_API_KEY)
+                
+                # 3. Combine original data with enhancement
+                enhanced_article = {
+                    "original_article": doc.metadata,
+                    "ai_enhancement": enhancement
+                }
+                enhanced_articles.append(enhanced_article)
+                print("Enhancement successful.")
+            except Exception as e:
+                print(f"Could not enhance article: {e}")
+        else:
+            print("Skipping article with no content.")
+
+    # 4. Save the results to a JSON file
+    if enhanced_articles:
         with open("enhanced_news.json", "w", encoding="utf-8") as f:
-            json.dump([enhanced_article], f, indent=4, ensure_ascii=False)
-            
-        print("Successfully saved enhanced mock article to enhanced_news.json")
-
-    except Exception as e:
-        print(f"Could not enhance article: {e}")
+            json.dump(enhanced_articles, f, indent=4, ensure_ascii=False)
+        print(f"Successfully saved {len(enhanced_articles)} enhanced articles to enhanced_news.json")
+    else:
+        print("No articles were enhanced.")
 
 if __name__ == "__main__":
     main()

@@ -1,0 +1,22 @@
+[
+    {
+        "original_article": {
+            "title": "Artemis Rocket Set for Historic Lunar Launch",
+            "link": "https://example.com/artemis-launch",
+            "source": "space-news-inc",
+            "publish_date": "2025-09-20"
+        },
+        "ai_enhancement": {
+            "summary": "NASA's Artemis rocket, years in development, is poised for launch next month, aiming to establish a long-term lunar presence and pave the way for future Mars missions.  The mission anticipates significant scientific discoveries about our solar system's formation.",
+            "sentiment": "positive",
+            "topics": [
+                "Artemis Rocket Launch",
+                "Lunar Exploration",
+                "Mars Missions",
+                "Scientific Discovery",
+                "Space Exploration"
+            ],
+            "credibility": "The article presents information consistent with NASA's Artemis program goals and timelines.  The source is not specified, but the information is factually accurate based on public knowledge."
+        }
+    }
+]
