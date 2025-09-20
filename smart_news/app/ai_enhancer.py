@@ -1,7 +1,7 @@
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.prompts import PromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
-from langchain_core.pydantic_v1 import BaseModel, Field
+from pydantic import BaseModel, Field
 from typing import List
 
 class ArticleEnhancement(BaseModel):
@@ -23,7 +23,7 @@ def enhance_article(article_content: str, api_key: str) -> dict:
     )
 
     # Initialize the Gemini model
-    model = ChatGoogleGenerativeAI(model="gemini-pro", google_api_key=api_key, temperature=0)
+    model = ChatGoogleGenerativeAI(model="gemini-1.5-flash", google_api_key=api_key, temperature=0)
 
     # Create the chain
     chain = prompt | model | parser
