@@ -29,7 +29,7 @@ urls = [
     "https://www.spacex.com/"
 ]
 docs_from_web = []
-
+print('Searching the web..')
 for url in urls:
     loader = WebBaseLoader(url)
     docs_from_web.extend(loader.load())
