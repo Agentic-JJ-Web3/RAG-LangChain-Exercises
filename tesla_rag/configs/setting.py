@@ -52,5 +52,5 @@ def load_embeddings():
 
     # Generate embeddings for multiple texts at once
     # This is more efficient than generating them one by one
-    embedded_docs = embeddings.embed_documents(sample_text)
+    # embedded_docs = embeddings.embed_documents(sample_text)
     return embeddings
