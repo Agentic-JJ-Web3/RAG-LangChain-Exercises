@@ -40,12 +40,12 @@ def load_embeddings():
     # Test with sample text
     # Embeddings work by converting text to numerical representations(vectors) that capture meaning
 
-    sample_text = [
-        "The weather is beautiful today.",
-        "It's a sunny and pleasant day outside.",
-        "I love going for walks when the weather is nice.",
-        "Machine learning is fascinating."
-        ]
+    # sample_text = [
+    #     "The weather is beautiful today.",
+    #     "It's a sunny and pleasant day outside.",
+    #     "I love going for walks when the weather is nice.",
+    #     "Machine learning is fascinating."
+    #     ]
     
     # print("Generating embeddings for sample text...")
     # print("-"*50)
