@@ -35,7 +35,7 @@ for url in urls:
     docs_from_web.extend(loader.load())
 
 # 3. Load from Wikipedia
-print('Loading Documents')
+print('Searching Wikipedia..')
 wiki_loader = WikipediaLoader(query="Tesla, Inc.", load_max_docs=2)
 docs_from_wiki = wiki_loader.load()
 
