@@ -29,11 +29,13 @@ urls = [
     "https://www.spacex.com/"
 ]
 docs_from_web = []
+
 for url in urls:
     loader = WebBaseLoader(url)
     docs_from_web.extend(loader.load())
 
 # 3. Load from Wikipedia
+print('Loading Documents')
 wiki_loader = WikipediaLoader(query="Tesla, Inc.", load_max_docs=2)
 docs_from_wiki = wiki_loader.load()
 
