@@ -40,6 +40,7 @@ wiki_loader = WikipediaLoader(query="Tesla, Inc.", load_max_docs=2)
 docs_from_wiki = wiki_loader.load()
 
 # Combine all
+print('Combining all docs.')
 all_docs = docs_from_pdfs + docs_from_web + docs_from_wiki
 print(f"Total documents loaded: {len(all_docs)}")
 
