@@ -75,5 +75,6 @@ vector_db.persist()
 # ========================
 prompt = "Was Tesla profitable? List some key metrics from their reports and Wikipedia."
 response = vector_db.similarity_search(prompt, k=3)
+print('Printing response to semantic search')
 
 pprint(response)
