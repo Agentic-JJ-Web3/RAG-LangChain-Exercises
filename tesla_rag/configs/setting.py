@@ -47,8 +47,8 @@ def load_embeddings():
         "Machine learning is fascinating."
         ]
     
-    print("Generating embeddings for sample text...")
-    print("-"*50)
+    # print("Generating embeddings for sample text...")
+    # print("-"*50)
 
     # Generate embeddings for multiple texts at once
     # This is more efficient than generating them one by one
